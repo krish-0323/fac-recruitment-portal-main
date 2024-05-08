@@ -65,22 +65,26 @@ const Facultypanel = () => {
               <div className='grid grid-cols-2 gap-y-4 mb-4 justify-center px-2 py-5 rounded-md' style={{backgroundColor:"#8ecae6"}}>
                 <div className='grid grid-cols-2'>
                   <div><label>Advertisement Number:</label></div>
-                  <div><input type="text" className='w-5/6' required /></div>
+                  <div>
+                    <select name='advertismentNumber' value='<%= advertismentNumber%>' className='w-5/6 text-sm p-1' required>
+                      <option value="IITP/FACREC-CHE/2023/JULY/02">IITP/FACREC-CHE/2023/JULY/02</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div className='grid grid-cols-2'>
                   <div><label>Application Number:</label></div>
-                  <div><input type="text" className='w-5/6' required /></div>
+                  <div><input type="text" className='w-5/6 text-sm p-1' required /></div>
                 </div>
 
                 <div className='grid grid-cols-2'>
                   <div><label>Date of Application:</label></div>
-                  <div><input type="date" className='w-5/6' required /></div>
+                  <div><input type="date" className='w-5/6 text-sm p-1' required /></div>
                 </div>
 
                 <div className='grid grid-cols-2'>
                   <div><label>Post Applied:</label></div>
-                  <div><select className='w-5/6' required>
+                  <div><select className='w-5/6 text-sm p-1' value='<%= postApplied%>' name='postApplied' required>
                     <option value="Professor">Professor</option>
                     <option value="Associate Professor">Associate Professor</option>
                     <option value="Associate Professor with Grade I">Associate Professor with Grade I</option>
@@ -91,7 +95,16 @@ const Facultypanel = () => {
 
                 <div className='grid grid-cols-2'>
                   <div><label>Department:</label></div>
-                  <div><input type="text" className='w-5/6' required /></div>
+                  <div>
+                    <select value='<%= department%>' name='department' className='w-5/6 text-sm p-1' required>
+                      <option value="CSE">CSE</option>
+                      <option value="Electrical">Electrical</option>
+                      <option value="Mathematics">Mathematics</option>
+                      <option value="Mechanical">Mechanical</option>
+                      <option value="Chemical">Chemical</option>
+                      <option value="Physics">Physics</option>
+                    </select>
+                  </div>
                 </div>
 
               </div>

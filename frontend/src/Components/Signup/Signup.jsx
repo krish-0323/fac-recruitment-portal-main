@@ -116,7 +116,8 @@ function Signup() {
                 </div>
                 <div className='w-1/2 md:w-5/12'>
                     <select className='rounded-md shadow px-2 py-0.5 text-black outline-none text-ms w-11/12' name='category'
-                    onChange={handleInput} value="<%= category%>">
+                    onChange={handleInput} 
+                    >
                         <option value="" disabled='disabled' className='text-xs font-medium'>Select Category</option>
                         <option value="UR" className='text-xs font-medium'>UR</option>
                         <option value="OBC" className='text-xs font-medium'>OBC</option>
