@@ -93,33 +93,78 @@ app.post('/academic', (req, res) => {
         req.body.ssc_percentage,
         req.body.ssc_divison
     ]
+    const sql1 = "INSERT INTO addeducation (`degree`, `university`, `branch`, `yoj`, `yoc`, `duration`, `percentage`, `divison`) VALUES (?)";
+    const values1 = [
+        req.body.degree,
+        req.body.university,
+        req.body.branch,
+        req.body.yoj,
+        req.body.yoc,
+        req.body.duration,
+        req.body.percentage,
+        req.body.divison
+    ]
     db.query(sql, [values], (err, data) => {
         if(err){
             return res.json("Error");
         }
-        return res.json(data);
+        db.query(sql1, [values1], (err, data) => {
+            if(err){
+                return res.json("Error");
+            }
+            return res.json(data);
+        });
     });
 })
 
-// app.post('/academic', (req, res) => {
-//     const sql = "INSERT INTO addEducation (`degree`, `university`, `branch`, `yoj`, `yoc`, `duration`, `percentage`, `divison`) VALUES (?)";
-//     const values = [
-//         req.body.degree,
-//         req.body.university,
-//         req.body.branch,
-//         req.body.yoj,
-//         req.body.yoc,
-//         req.body.duration,
-//         req.body.percentage,
-//         req.body.divison
-//     ]
-//     db.query(sql, [values], (err, data) => {
-//         if(err){
-//             return res.json("Error");
-//         }
-//         return res.json(data);
-//     });
-// })
+app.post('/professional', (req, res) => {
+    const sql = "INSERT INTO professionalsociety (`name`, `membership`) VALUES (?)";
+    const values = [
+        req.body.name,
+        req.body.membership
+    ]
+    const sql1 = "INSERT INTO professionaltraining (`pttype`, `ptorganization`, `ptyear`, `ptduration`) VALUES (?)";
+    const values1 = [
+        req.body.pttype,
+        req.body.ptorganization,
+        req.body.ptyear,
+        req.body.ptduration
+    ]
+    const sql2 = "INSERT INTO project (`sp_agency`, `sp_title`, `sp_amount`, `sp_period`, `sp_role`, `sp_status`, `cp_agency`, `cp_title`, `cp_amount`, `cp_period`, `cp_role`, `cp_status`) VALUES (?)";
+    const values2 = [
+        req.body.sp_agency,
+        req.body.sp_title,
+        req.body.sp_amount,
+        req.body.sp_period,
+        req.body.sp_role,
+        req.body.sp_status,
+        req.body.cp_agency,
+        req.body.cp_title,
+        req.body.cp_amount,
+        req.body.cp_period,
+        req.body.cp_role,
+        req.body.cp_status
+    ]
+    db.query(sql, [values], (err, data) => {
+        if(err){
+            return res.json("Error");
+        } else {
+            db.query(sql1, [values1], (err, data) => {
+                if(err){
+                    return res.json("Error");
+                } else {
+                    db.query(sql2, [values2], (err, data) => {
+                        if(err){
+                            return res.json("Error");
+                        } else {
+                            return res.json(data);
+                        }
+                    })
+                }
+            })
+        }
+    });
+})
 
 app.post('/', (req, res) => {
     const sql = "SELECT * FROM login WHERE `email` = ? AND `password` = ?" ;

@@ -4,12 +4,6 @@ import { Link } from 'react-router-dom'
 export default function Publications() {
   return (
     <>
-        {/* <Link to='/employment' className='bg-red-500 rounded-xl px-3 py-1 text-white'>Back</Link>
-        <br/>
-        <br/>
-        <br/>
-        <Link to='/professional' className='bg-green-500 text-center rounded-xl px-3 py-1 text-white w-20'>Save & Next</Link> */}
-
         <div className=' w-full min-w-96 overflow-auto' style={{ backgroundColor: "#d3d3d3" }}> 
 
         <div className="flex flex-wrap justify-center content-start gap-y-6 md:gap-y-12 w-full min-w-96 h-screen min-h-fit">
@@ -135,29 +129,6 @@ export default function Publications() {
                         <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
                       </td>
                     </tr>
-                    <tr>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                    </tr>
                   </tbody>  
                 </table>
               </div>
@@ -185,29 +156,6 @@ export default function Publications() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                    </tr>
                     <tr>
                       <td className='border border-slate-700 p-1'>
                         <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
@@ -265,21 +213,6 @@ export default function Publications() {
                       <td className='border border-slate-700 p-1'>
                         <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
                       </td>
-                      
-                    </tr>
-                    <tr>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -301,20 +234,6 @@ export default function Publications() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                    </tr>
                     <tr>
                       <td className='border border-slate-700 p-1'>
                         <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>

@@ -1,7 +1,50 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 export default function Professional() {
+  const [values, setValues] = useState({
+    name: '',
+    membership: '',
+    pttype: '',
+    ptorganization: '',
+    ptyear: '',
+    ptduration: '',
+    arname: '',
+    awardedby: '',
+    aryear: '',
+    sp_agency: '',
+    sp_title: '',
+    sp_amount: '',
+    sp_period: '',
+    sp_role: '',
+    sp_status: '',
+    cp_agency: '',
+    cp_title: '',
+    cp_amount: '',
+    cp_period: '',
+    cp_role: '',
+    cp_status: ''
+  })
+
+  const handleInput = (event) => {
+    setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
+    console.log(event.target.value);
+  }
+
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios.post('http://localhost:8081/professional', values)
+    .then(res => {
+      navigate('/thesis');
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
   return (
     <>
         <div className=' w-full min-w-96 overflow-auto' style={{ backgroundColor: "#d3d3d3" }}> 
@@ -46,6 +89,9 @@ export default function Professional() {
 
             {/* block */}
             <div className='w-screen'>
+              <form action='' 
+              onSubmit={handleSubmit}
+              >
               <div className='text-purple-700 text-center font-semibold text-xl mb-3'>
                 <h1>9. Membership of Professional Societies</h1>
               </div>
@@ -66,18 +112,12 @@ export default function Professional() {
                   <tbody>
                     <tr>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text' name='name' onChange={handleInput}
+                        className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text' name='membership' onChange={handleInput}
+                        className='w-full'/></div>
                       </td>
                     </tr>
                   </tbody>
@@ -106,30 +146,20 @@ export default function Professional() {
                   <tbody>
                     <tr>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text' name='pttype'
+                        onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text' name='ptorganization'
+                        onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text' name='ptyear'
+                        onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text' name='ptduration'
+                        onChange={handleInput} className='w-full'/></div>
                       </td>
                     </tr>
                   </tbody>
@@ -183,20 +213,25 @@ export default function Professional() {
                   <tbody>
                     <tr>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text' name='sp_agency'
+                        onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text' name='sp_title'
+                        onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text' name='sp_amount'
+                        onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text' name='sp_period'
+                        onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
                         <div className='flex flex-wrap justify-center'>
-                        <select className='w-full'>
+                        <select className='w-full' name='sp_role'
+                        onChange={handleInput}>
                           <option value='Select'>Select</option>
                           <option value='Principal Investigator'>Principal Investigator</option>
                           <option value='Co-Investigator'>Co-Investigator</option>
@@ -204,33 +239,8 @@ export default function Professional() {
                         </div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'>
-                        <select className='w-full'>
-                          <option value='Select'>Select</option>
-                          <option value='Principal Investigator'>Principal Investigator</option>
-                          <option value='Co-Investigator'>Co-Investigator</option>
-                        </select>
-                        </div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text' name='sp_status'
+                        onChange={handleInput} className='w-full'/></div>
                       </td>
                     </tr>
                   </tbody>
@@ -257,20 +267,25 @@ export default function Professional() {
                   <tbody>
                     <tr>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text' name='cp_agency'
+                        onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text' name='cp_title'
+                        onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text' name='cp_amount'
+                        onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text' name='cp_period'
+                        onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
                         <div className='flex flex-wrap justify-center'>
-                        <select className='w-full'>
+                        <select className='w-full' name='cp_role'
+                        onChange={handleInput}>
                           <option value='Select'>Select</option>
                           <option value='Principal Investigator'>Principal Investigator</option>
                           <option value='Co-Investigator'>Co-Investigator</option>
@@ -278,52 +293,32 @@ export default function Professional() {
                         </div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'>
-                        <select className='w-full'>
-                          <option value='Select'>Select</option>
-                          <option value='Principal Investigator'>Principal Investigator</option>
-                          <option value='Co-Investigator'>Co-Investigator</option>
-                        </select>
-                        </div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text' name='cp_status'
+                        onChange={handleInput} className='w-full'/></div>
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
+
+              <div className='flex flex-wrap items-center justify-between mt-3'>
+                <div>
+                  <Link to="/publications" className='bg-blue-900 text-white px-2 py-1 rounded-md'>
+                    Back
+                  </Link>
+                </div>
+                <div>
+                  <button type='submit' className='bg-green-500 text-white px-2 py-1 rounded-md'>
+                    Save & Next
+                  </button>
+                </div>
+              </div>
+              </form>
             </div>            
-
+            
           
-            <div>
-              <Link to="/publications" className='bg-blue-900 text-white px-2 py-1 rounded-md'>
-                Back
-              </Link>
-            </div>
-            <div>
-              <Link to="/thesis" className='bg-green-500 text-white px-2 py-1 rounded-md'>
-                Save & Next
-              </Link>
-            </div>
-
+            
+            
           </div>
           
         </div>
