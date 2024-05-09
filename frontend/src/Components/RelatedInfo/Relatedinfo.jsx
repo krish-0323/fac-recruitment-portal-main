@@ -1,14 +1,36 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 export default function Relatedinfo() {
+  const [values, setValues] = useState({
+    research: '',
+    teaching: '',
+    other_info: '',
+    professional: '',
+    journal: ''
+  })
+
+  const handleInput = (event) => {
+    setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
+    console.log(event.target.value);
+  }
+
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios.post('http://localhost:8081/rel_info', values)
+    .then(res => {
+      navigate('/submissions');
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
   return (
     <>
-        {/* <Link to='/thesis' className='bg-red-500 rounded-xl px-3 py-1 text-white'>Back</Link>
-        <br/>
-        <br/>
-        <br/>
-        <Link to='/submissions' className='bg-green-500 text-center rounded-xl px-3 py-1 text-white w-20'>Save & Next</Link> */}
 
         <div className=' w-full min-w-96 overflow-auto' style={{ backgroundColor: "#d3d3d3" }}> 
 
@@ -52,13 +74,15 @@ export default function Relatedinfo() {
 
             {/* block */}
             <div className='w-screen'>
+              <form action='' onSubmit={handleSubmit}>
               <div className='text-white text-lg py-1 px-4' style={{backgroundColor:"#284b63"}}>
                 <h2 >14. Significant research contribution and future plans *</h2>
                 <p className='text-sm'>(Please provide a Research Statement describing your research plans and one or two specific research projects to be conducted at IIT Patna in 2-3 years time frame)</p>
               </div>
 
               <div className='flex flex-wrap gap-y-2 mb-4 px-2 py-5'style={{backgroundColor:"#8ecae6"}}>
-                <textarea rows='10' cols='125' className='mx-1'>
+                <textarea rows='10' cols='125' 
+                name='research' onChange={handleInput} className='mx-1'>
 
                 </textarea>
               </div>
@@ -69,7 +93,8 @@ export default function Relatedinfo() {
               </div>
 
               <div className='flex flex-wrap gap-y-2 mb-4 px-2 py-5'style={{backgroundColor:"#8ecae6"}}>
-                <textarea rows='10' cols='125' className='mx-1'>
+                <textarea rows='10' cols='125' 
+                name='teaching' onChange={handleInput} className='mx-1'>
 
                 </textarea>
               </div>
@@ -80,7 +105,8 @@ export default function Relatedinfo() {
               </div>
 
               <div className='flex flex-wrap gap-y-2 mb-4 px-2 py-5'style={{backgroundColor:"#8ecae6"}}>
-                <textarea rows='10' cols='125' className='mx-1'>
+                <textarea rows='10' cols='125' 
+                name='other_info' onChange={handleInput} className='mx-1'>
 
                 </textarea>
               </div>
@@ -91,7 +117,8 @@ export default function Relatedinfo() {
               </div>
 
               <div className='flex flex-wrap gap-y-2 mb-4 px-2 py-5'style={{backgroundColor:"#8ecae6"}}>
-                <textarea rows='10' cols='125' className='mx-1'>
+                <textarea rows='10' cols='125' 
+                name='professional' onChange={handleInput} className='mx-1'>
 
                 </textarea>
               </div>
@@ -102,25 +129,29 @@ export default function Relatedinfo() {
               </div>
 
               <div className='flex flex-wrap gap-y-2 mb-4 px-2 py-5'style={{backgroundColor:"#8ecae6"}}>
-                <textarea rows='10' cols='125' className='mx-1'>
+                <textarea rows='10' cols='125' 
+                name='journal' onChange={handleInput} className='mx-1'>
 
                 </textarea>
               </div>
 
+              <div className='flex flex-wrap items-center justify-between mt-3'>
+                <div>
+                  <Link to="/faculty_panel" className='bg-blue-900 text-white px-2 py-1 rounded-md'>
+                    Back
+                  </Link>
+                </div>
+                <div>
+                  <button type='submit' className='bg-green-500 text-white px-2 py-1 rounded-md'>
+                    Save & Next
+                  </button>
+                </div>
+              </div>
+            </form>
+
+
 
             </div>
-          
-            <div>
-              <Link to="/thesis" className='bg-blue-900 text-white px-2 py-1 rounded-md'>
-                Back
-              </Link>
-            </div>
-            <div>
-              <Link to="/submissions" className='bg-green-500 text-white px-2 py-1 rounded-md'>
-                Save & Next
-              </Link>
-            </div>
-
           </div>
           
         </div>

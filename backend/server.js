@@ -213,6 +213,23 @@ app.post('/thesis', (req, res) => {
     });
 })
 
+app.post('/rel_info', (req, res) => {
+    const sql = "INSERT INTO rel_info (`research`, `teaching`, `other_info`, `professional`, `journal`) VALUES (?)";
+    const values = [
+        req.body.research,
+        req.body.teaching,
+        req.body.other_info,
+        req.body.professional,
+        req.body.journal,
+    ]
+    db.query(sql, [values], (err, data) => {
+        if(err){
+            return res.json("Error");
+        }
+        return res.json(data);
+    })
+})
+
 app.post('/', (req, res) => {
     const sql = "SELECT * FROM login WHERE `email` = ? AND `password` = ?" ;
     db.query(sql, [req.body.email, req.body.password], (err, data) => {
