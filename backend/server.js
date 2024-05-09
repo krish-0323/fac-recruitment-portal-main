@@ -13,6 +13,17 @@ const db = mysql.createConnection({
     port: 3307
 });
 
+app.get('/facutly_panel', (req, res) => {
+    const sql = "SELECT firstName FROM login WHERE ";
+    db.query(sql, (err, data) => {
+        if(err) {
+            console.error('Error');
+            return res.status(500).json({error: 'Error'});
+        }
+        res.json(data);
+    });
+});
+
 app.post('/signup', (req, res) => {
     const sql = "INSERT INTO login (`firstName`, `lastName`, `email`, `password`, `category`) VALUES (?)";
     const values = [

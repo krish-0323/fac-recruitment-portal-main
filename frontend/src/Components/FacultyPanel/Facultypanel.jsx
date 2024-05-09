@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import Validation from './FCValidation';
 import axios from 'axios';
@@ -114,7 +114,7 @@ const Facultypanel = () => {
 
                 <div className='grid grid-cols-2'>
                   <div><label>Application Number:</label></div>
-                  <div><input type="text" className='w-5/6 text-sm p-1' required
+                  <div><input type="text" className='w-5/6 text-sm p-1' defaultValue={240002} required
                   onChange={handleInput} /></div>
                 </div>
 
