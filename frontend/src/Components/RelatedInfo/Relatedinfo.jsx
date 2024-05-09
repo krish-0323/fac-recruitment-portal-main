@@ -59,7 +59,7 @@ export default function Relatedinfo() {
             mb-10 px-7 py-4"
           >
             <div className='flex flex-wrap items-center w-full'>
-              <div className='w-4/6 font-semibold text-xl'><h1>Welcome: <span className='text-teal-800'>Krishna Purwar</span></h1></div>
+              <div className='w-4/6 font-semibold text-xl'><h1>Welcome <span className='text-teal-800'></span></h1></div>
               <div className='flex flex-wrap gap-4 w-2/6 justify-end'>
                 <Link to='/forgotpassword' className='bg-green-500 px-2 py-1 my-2 text-white font-normal rounded-md hidden'
                 onClick={() => {/* handle change password */}}>
