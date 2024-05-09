@@ -1,7 +1,58 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 export default function Publications() {
+  const [values, setValues] = useState({
+    IJP: '',
+    NJP: '',
+    ICP: '',
+    NCP: '',
+    patent: '',
+    book: '',
+    chapter: '',
+    j_author: '',
+    j_title: '',
+    j_name: '',
+    j_year: '',
+    j_impact: '',
+    j_doi: '',
+    j_status: '',
+    p_inventor: '',
+    p_title: '',
+    p_country: '',
+    p_number: '',
+    p_dof: '',
+    p_status: '',
+    b_author: '',
+    b_title: '',
+    b_yop: '',
+    b_isbn: '',
+    c_author: '',
+    c_title: '',
+    c_yop: '',
+    c_isbn: '',
+    link: ''
+  })
+
+  const handleInput = (event) => {
+    setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
+    console.log(event.target.value);
+  }
+
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios.post('http://localhost:8081/publications', values)
+    .then(res => {
+      navigate('/professional');
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
   return (
     <>
         <div className=' w-full min-w-96 overflow-auto' style={{ backgroundColor: "#d3d3d3" }}> 
@@ -46,6 +97,9 @@ export default function Publications() {
 
             {/* block */}
             <div className='w-screen'>
+              <form action='' 
+              onSubmit={handleSubmit}
+              >
               <div className='text-purple-700 text-center font-semibold text-xl mb-3'>
                 <h1>5. Summary of Publications *</h1>
               </div>
@@ -54,31 +108,38 @@ export default function Publications() {
                 <div className='grid grid-cols-2 gap-4 gap-x-24'>
                   <div className='grid grid-cols-4'>
                     <div className='col-span-3'><label>Number of International Journal Papers </label></div>
-                    <div><input type="text" className='w-3/4' required/></div>
+                    <div><input type="text" className='w-3/4'
+                    name='IJP' onChange={handleInput} required/></div>
                   </div>
                   <div className='grid grid-cols-4'>
                     <div className='col-span-3'><label>Number of National Journal Papers </label></div>
-                    <div><input type="text" className='w-3/4' required/></div>
+                    <div><input type="text" className='w-3/4'
+                    name='NJP' onChange={handleInput} required/></div>
                   </div>
                   <div className='grid grid-cols-4'>
                     <div className='col-span-3'><label>Number of International Conference Papers </label></div>
-                    <div><input type="text" className='w-3/4' required/></div>
+                    <div><input type="text" className='w-3/4'
+                    name='ICP' onChange={handleInput} required/></div>
                   </div>
                   <div className='grid grid-cols-4'>
                     <div className='col-span-3'><label>Number of National Conference Papers </label></div>
-                    <div><input type="text" className='w-3/4' required/></div>
+                    <div><input type="text" className='w-3/4'
+                    name='NCP' onChange={handleInput} required/></div>
                   </div>
                   <div className='grid grid-cols-4'>
                     <div className='col-span-3'><label>Number of Patent(s) [Filed, Published, Granted] </label></div>
-                    <div><input type="text" className='w-3/4' required/></div>
+                    <div><input type="text" className='w-3/4'
+                    name='patent' onChange={handleInput} required/></div>
                   </div>
                   <div className='grid grid-cols-4'>
                     <div className='col-span-3'><label>Number of Book(s) </label></div>
-                    <div><input type="text" className='w-3/4' required/></div>
+                    <div><input type="text" className='w-3/4'
+                    name='book' onChange={handleInput} required/></div>
                   </div>
                   <div className='grid grid-cols-4'>
                     <div className='col-span-3'><label>Number of Book Chapter(s)</label></div>
-                    <div><input type="text" className='w-3/4' required/></div>
+                    <div><input type="text" className='w-3/4'
+                    name='chapter' onChange={handleInput} required/></div>
                   </div>
                 </div>
               </div>
@@ -108,25 +169,32 @@ export default function Publications() {
                   <tbody>
                     <tr>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='j_author' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='j_title' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='j_name' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='j_year' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='j_impact' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='j_doi' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='j_status' onChange={handleInput} className='w-full'/></div>
                       </td>
                     </tr>
                   </tbody>  
@@ -158,25 +226,32 @@ export default function Publications() {
                   <tbody>
                     <tr>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='p_inventor' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='p_title' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='p_country' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='p_number' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='p_dof' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='p_dop' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='p_status' onChange={handleInput} className='w-full'/></div>
                       </td>
                     </tr>
                   </tbody>
@@ -202,16 +277,20 @@ export default function Publications() {
                   <tbody>
                     <tr>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='b_author' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='b_title' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='b_yop' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='b_isbn' onChange={handleInput} className='w-full'/></div>
                       </td>
                     </tr>
                   </tbody>
@@ -236,16 +315,20 @@ export default function Publications() {
                   <tbody>
                     <tr>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='c_author' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='c_title' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='c_yop' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='c_isbn' onChange={handleInput} className='w-full'/></div>
                       </td>
                     </tr>
                   </tbody>
@@ -261,26 +344,31 @@ export default function Publications() {
               </div>
               <div className='grid grid-cols-12 py-2' style={{backgroundColor:"#8ecae6"}}>
                 <div className='col-span-3 px-2'><label type='link'>Google Scholar Link</label></div>
-                <div className='col-span-9 w-full'><input type='link' className='w-11/12'/></div>
+                <div className='col-span-9 w-full'><input type='link'
+                name='link' onChange={handleInput} className='w-11/12' required/></div>
               </div>
 
+              <div className='flex flex-wrap items-center justify-between mt-3'>
+              <div>
+                <Link to="/employment" className='bg-blue-900 text-white px-2 py-1 rounded-md'>
+                  Back
+                </Link>
+              </div>
+              <div>
+                <button type='submit' className='bg-green-500 text-white px-2 py-1 rounded-md'>
+                  Save & Next
+                </button>
+              </div>
+            </div>
+            
+
+            </form>
 
               
 
 
             </div>
           
-            <div>
-              <Link to="/employment" className='bg-blue-900 text-white px-2 py-1 rounded-md'>
-                Back
-              </Link>
-            </div>
-            <div>
-              <Link to="/professional" className='bg-green-500 text-white px-2 py-1 rounded-md'>
-                Save & Next
-              </Link>
-            </div>
-
           </div>
           
         </div>

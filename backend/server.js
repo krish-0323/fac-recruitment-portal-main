@@ -69,6 +69,93 @@ app.post('/faculty_panel', (req, res) => {
     });
 })
 
+app.post('/publications', (req, res) => {
+    const sql = "INSERT INTO publication (`IJP`, `NJP`, `ICP`, `NCP`, `patent`, `book`, `chapter`) VALUES (?)";
+    const values = [
+        req.body.IJP,
+        req.body.NJP,
+        req.body.ICP,
+        req.body.NCP,
+        req.body.patent,
+        req.body.book,
+        req.body.chapter
+    ]
+    const sql1 = "INSERT INTO best_publication (`j_author`, `j_title`, `j_name`, `j_year`, `j_impact`, `j_doi`, `j_status`) VALUES (?)";
+    const values1 = [
+        req.body.j_author,
+        req.body.j_title,
+        req.body.j_name,
+        req.body.j_year,
+        req.body.j_impact,
+        req.body.j_doi,
+        req.body.j_status
+    ]
+    const sql2 = "INSERT INTO patent (`p_inventor`, `p_title`, `p_country`, `p_number`, `p_dof`, `p_status`) VALUES (?)";
+    const values2 = [
+        req.body.p_inventor,
+        req.body.p_title,
+        req.body.p_country,
+        req.body.p_number,
+        req.body.p_dof,
+        req.body.p_status,
+    ]
+    const sql3 = "INSERT INTO book (`b_author`, `b_title`, `b_yop`, `b_isbn`) VALUES (?)";
+    const values3 = [
+        req.body.b_author,
+        req.body.b_title,
+        req.body.b_yop,
+        req.body.b_isbn
+    ]
+    const sql4 = "INSERT INTO chapter (`c_author`, `c_title`, `c_yop`, `c_isbn`) VALUES (?)";
+    const values4 = [
+        req.body.c_author,
+        req.body.c_title,
+        req.body.c_yop,
+        req.body.c_isbn
+    ]
+    const sql5 = "INSERT INTO googlescholar (`link`) VALUES (?)";
+    const values5 = [
+        req.body.link
+    ]
+    db.query(sql, [values], (err, data) => {
+        if(err){
+            return res.json('Error');
+        } else {
+            db.query(sql1, [values1], (err, data) => {
+                if(err){
+                    return res.json('Error');
+                } else {
+                    db.query(sql2, [values2], (err, data) => {
+                        if(err){
+                            return res.json('Error');
+                        } else {
+                            db.query(sql3, [values3], (err, data) => {
+                                if(err){
+                                    return res.json('Error');
+                                } else {
+                                    db.query(sql4, [values4], (err, data) => {
+                                        if(err){
+                                            return res.json('Error');
+                                        } else {
+                                            db.query(sql5, [values5], (err,data) => {
+                                                if(err){
+                                                    return res.json('Error');
+                                                } 
+
+                                                return res.json(data);
+                                            })
+                                        }
+                                    })
+                                }
+                            }) 
+                        }
+                    })
+                }
+            })
+        }
+    })
+})
+
 app.post('/academic', (req, res) => {
     const sql = "INSERT INTO education (`phd_university`, `phd_department`, `phd_supervisor`, `phd_yoj`, `phd_doThesis`, `phd_doAward`, `phd_title`, `pg_degree`, `pg_university`, `pg_branch`, `pg_yoj`, `pg_yoc`, `pg_duration`, `pg_percentage`, `pg_divison`, `ug_degree`, `ug_university`, `ug_branch`, `ug_yoj`, `ug_yoc`, `ug_duration`, `ug_percentage`, `ug_divison`, `hsc_school`, `hsc_yop`, `hsc_percentage`, `hsc_divison`, `ssc_school`, `ssc_yop`, `ssc_percentage`, `ssc_divison`) VALUES (?)";
     const values = [

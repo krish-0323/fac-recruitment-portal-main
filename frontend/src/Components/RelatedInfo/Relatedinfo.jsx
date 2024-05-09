@@ -82,7 +82,7 @@ export default function Relatedinfo() {
 
               <div className='flex flex-wrap gap-y-2 mb-4 px-2 py-5'style={{backgroundColor:"#8ecae6"}}>
                 <textarea rows='10' cols='125' 
-                name='research' onChange={handleInput} className='mx-1'>
+                name='research' onChange={handleInput} className='mx-1' required>
 
                 </textarea>
               </div>
@@ -94,50 +94,50 @@ export default function Relatedinfo() {
 
               <div className='flex flex-wrap gap-y-2 mb-4 px-2 py-5'style={{backgroundColor:"#8ecae6"}}>
                 <textarea rows='10' cols='125' 
-                name='teaching' onChange={handleInput} className='mx-1'>
+                name='teaching' onChange={handleInput} className='mx-1' required>
 
                 </textarea>
               </div>
 
               <div className='text-white text-lg py-1 px-4' style={{backgroundColor:"#284b63"}}>
-                <h2 >16. Any other relevant information.</h2>
+                <h2 >16. Any other relevant information *</h2>
                 {/* <p className='text-sm'>(Please provide a Research Statement describing your research plans and one or two specific research projects to be conducted at IIT Patna in 2-3 years time frame)</p> */}
               </div>
 
               <div className='flex flex-wrap gap-y-2 mb-4 px-2 py-5'style={{backgroundColor:"#8ecae6"}}>
                 <textarea rows='10' cols='125' 
-                name='other_info' onChange={handleInput} className='mx-1'>
+                name='other_info' onChange={handleInput} className='mx-1' required>
 
                 </textarea>
               </div>
 
               <div className='text-white text-lg py-1 px-4' style={{backgroundColor:"#284b63"}}>
-                <h2 >17. Professional Service : Editorship/Reviewership</h2>
+                <h2 >17. Professional Service : Editorship/Reviewership *</h2>
                 {/* <p className='text-sm'>(Please provide a Research Statement describing your research plans and one or two specific research projects to be conducted at IIT Patna in 2-3 years time frame)</p> */}
               </div>
 
               <div className='flex flex-wrap gap-y-2 mb-4 px-2 py-5'style={{backgroundColor:"#8ecae6"}}>
                 <textarea rows='10' cols='125' 
-                name='professional' onChange={handleInput} className='mx-1'>
+                name='professional' onChange={handleInput} className='mx-1' required>
 
                 </textarea>
               </div>
 
               <div className='text-white text-lg py-1 px-4' style={{backgroundColor:"#284b63"}}>
-                <h2 >18. Detailed List of Journal Publication</h2>
+                <h2 >18. Detailed List of Journal Publication *</h2>
                 <p className='text-sm'>(Including Sr. No., Author's Names, Paper Title, Volume, Issue, Year, Page Nos., Impact Factor (if any), DOI, Status[Published/Accepted] )</p>
               </div>
 
               <div className='flex flex-wrap gap-y-2 mb-4 px-2 py-5'style={{backgroundColor:"#8ecae6"}}>
                 <textarea rows='10' cols='125' 
-                name='journal' onChange={handleInput} className='mx-1'>
+                name='journal' onChange={handleInput} className='mx-1' required>
 
                 </textarea>
               </div>
 
               <div className='flex flex-wrap items-center justify-between mt-3'>
                 <div>
-                  <Link to="/faculty_panel" className='bg-blue-900 text-white px-2 py-1 rounded-md'>
+                  <Link to="/thesis" className='bg-blue-900 text-white px-2 py-1 rounded-md'>
                     Back
                   </Link>
                 </div>
