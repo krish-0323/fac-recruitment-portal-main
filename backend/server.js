@@ -166,6 +166,53 @@ app.post('/professional', (req, res) => {
     });
 })
 
+app.post('/thesis', (req, res) => {
+    const sql = "INSERT INTO phd_thesis (`phd_name`, `phd_title`, `phd_role`, `phd_status`, `phd_yoc`) VALUES (?)";
+    const values = [
+        req.body.phd_name,
+        req.body.phd_title,
+        req.body.phd_role,
+        req.body.phd_status,
+        req.body.phd_yoc,
+    ]
+    const sql1 = "INSERT INTO pg_thesis (`pg_name`, `pg_title`, `pg_role`, `pg_status`, `pg_yoc`) VALUES (?)";
+    const values1 = [
+        req.body.pg_name,
+        req.body.pg_title,
+        req.body.pg_role,
+        req.body.pg_status,
+        req.body.pg_yoc,
+    ]
+    const sql2 = "INSERT INTO ug_thesis (`ug_name`, `ug_title`, `ug_role`, `ug_status`, `ug_yoc`) VALUES (?)";
+    const values2 = [
+        req.body.ug_name,
+        req.body.ug_title,
+        req.body.ug_role,
+        req.body.ug_status,
+        req.body.ug_yoc,
+    ]
+
+    db.query(sql, [values], (err, data) => {
+        if(err){
+            return res.json("Error");
+        } else {
+            db.query(sql1, [values1], (err, data) => {
+                if(err){
+                    return res.json("Error");
+                } else {
+                    db.query(sql2, [values2], (err, data) => {
+                        if(err){
+                            return res.json("Error");
+                        } else {
+                            return res.json(data);
+                        }
+                    })
+                }
+            })
+        }
+    });
+})
+
 app.post('/', (req, res) => {
     const sql = "SELECT * FROM login WHERE `email` = ? AND `password` = ?" ;
     db.query(sql, [req.body.email, req.body.password], (err, data) => {

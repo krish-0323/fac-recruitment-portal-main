@@ -1,14 +1,46 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios';
 
 export default function Thesis() {
+  const [values, setValues] = useState({
+    phd_name: '',
+    phd_title: '',
+    phd_role: '',
+    phd_status: '',
+    phd_yoc: '',
+    pg_name: '',
+    pg_title: '',
+    pg_role: '',
+    pg_status: '',
+    pg_yoc: '',
+    ug_name: '',
+    ug_title: '',
+    ug_role: '',
+    ug_status: '',
+    ug_yoc: ''
+  })
+
+  const handleInput = (event) => {
+    setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
+    console.log(event.target.value);
+  }
+
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios.post('http://localhost:8081/thesis', values)
+    .then(res => {
+      navigate('/rel_info');
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
   return (
     <>
-        {/* <Link to='/professional' className='bg-red-500 rounded-xl px-3 py-1 text-white'>Back</Link>
-        <br/>
-        <br/>
-        <br/>
-        <Link to='/rel_info' className='bg-green-500 text-center rounded-xl px-3 py-1 text-white w-20'>Save & Next</Link> */}
 
         <div className=' w-full min-w-96 overflow-auto' style={{ backgroundColor: "#d3d3d3" }}> 
 
@@ -52,6 +84,7 @@ export default function Thesis() {
 
             {/* block */}
             <div className='w-screen'>
+              <form action='' onSubmit={handleSubmit}>
               <div className='text-purple-700 text-center font-semibold text-xl my-3'>
                 <h1>13. Research Supervision</h1>
               </div>
@@ -75,14 +108,17 @@ export default function Thesis() {
                   <tbody>
                     <tr>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='phd_name' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='phd_title' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
                         <div className='flex flex-wrap justify-center'>
-                        <select className='w-full'>
+                        <select className='w-full'
+                        name='phd_role' onChange={handleInput}>
                           <option value='Select'>Select</option>
                           <option value='Principal Investigator'>Supervisor with no Co-Supervisor</option>
                           <option value='Co-Investigator'>Supervisor with Co-Supervisor</option>
@@ -91,34 +127,12 @@ export default function Thesis() {
                         </div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='phd_status' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'>
-                        <select className='w-full'>
-                          <option value='Select'>Select</option>
-                          <option value='Principal Investigator'>Supervisor with no Co-Supervisor</option>
-                          <option value='Co-Investigator'>Supervisor with Co-Supervisor</option>
-                          <option value='Co-Investigator'>Co-Supervisor</option>
-                        </select>
-                        </div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='phd_yoc' onChange={handleInput} className='w-full'/></div>
                       </td>
                     </tr>
                   </tbody>
@@ -144,14 +158,17 @@ export default function Thesis() {
                   <tbody>
                     <tr>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='pg_name' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='pg_title' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
                         <div className='flex flex-wrap justify-center'>
-                        <select className='w-full'>
+                        <select className='w-full'
+                        name='pg_role' onChange={handleInput}>
                           <option value='Select'>Select</option>
                           <option value='Principal Investigator'>Supervisor with no Co-Supervisor</option>
                           <option value='Co-Investigator'>Supervisor with Co-Supervisor</option>
@@ -160,34 +177,12 @@ export default function Thesis() {
                         </div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='pg_status' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'>
-                        <select className='w-full'>
-                          <option value='Select'>Select</option>
-                          <option value='Principal Investigator'>Supervisor with no Co-Supervisor</option>
-                          <option value='Co-Investigator'>Supervisor with Co-Supervisor</option>
-                          <option value='Co-Investigator'>Co-Supervisor</option>
-                        </select>
-                        </div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='pg_yoc' onChange={handleInput} className='w-full'/></div>
                       </td>
                     </tr>
                   </tbody>
@@ -213,14 +208,17 @@ export default function Thesis() {
                   <tbody>
                     <tr>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='ug_name' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='ug_title' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
                         <div className='flex flex-wrap justify-center'>
-                        <select className='w-full'>
+                        <select className='w-full'
+                        name='ug_role' onChange={handleInput}>
                           <option value='Select'>Select</option>
                           <option value='Principal Investigator'>Supervisor with no Co-Supervisor</option>
                           <option value='Co-Investigator'>Supervisor with Co-Supervisor</option>
@@ -229,52 +227,33 @@ export default function Thesis() {
                         </div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='ug_status' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'>
-                        <select className='w-full'>
-                          <option value='Select'>Select</option>
-                          <option value='Principal Investigator'>Supervisor with no Co-Supervisor</option>
-                          <option value='Co-Investigator'>Supervisor with Co-Supervisor</option>
-                          <option value='Co-Investigator'>Co-Supervisor</option>
-                        </select>
-                        </div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='ug_yoc' onChange={handleInput} className='w-full'/></div>
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </div>
+              <div className='flex flex-wrap items-center justify-between mt-3'>
+                <div>
+                  <Link to="/professional" className='bg-blue-900 text-white px-2 py-1 rounded-md'>
+                    Back
+                  </Link>
+                </div>
+                <div>
+                  <button type='submit' className='bg-green-500 text-white px-2 py-1 rounded-md'>
+                    Save & Next
+                  </button>
+                </div>
+              </div>
+              </form>
 
             </div>
-          
-            <div>
-              <Link to="/professional" className='bg-blue-900 text-white px-2 py-1 rounded-md'>
-                Back
-              </Link>
-            </div>
-            <div>
-              <Link to="/rel_info" className='bg-green-500 text-white px-2 py-1 rounded-md'>
-                Save & Next
-              </Link>
-            </div>
+
 
           </div>
           
