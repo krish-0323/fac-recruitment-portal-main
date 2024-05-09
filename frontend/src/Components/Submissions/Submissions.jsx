@@ -1,14 +1,37 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 export default function Submissions() {
+  const [values, setValues] = useState({
+    ref_name: '',
+    ref_position: '',
+    ref_association: '',
+    ref_organization: '',
+    ref_mail: '',
+    ref_contact: ''
+  })
+  
+  const handleInput = (event) => {
+    setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
+    console.log(event.target.value);
+  }
+
+  const navigate = useNavigate();
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios.post('http://localhost:8081/submissions', values)
+    .then(res => {
+      navigate('/payment');
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
   return (
     <>
-        {/* <Link to='/rel_info' className='bg-red-500 rounded-xl px-3 py-1 text-white'>Back</Link>
-        <br/>
-        <br/>
-        <br/>
-        <Link to='/payment' className='bg-green-500 text-center rounded-xl px-3 py-1 text-white w-20'>Save & Next</Link> */}
 
         <div className=' w-full min-w-96 overflow-auto' style={{ backgroundColor: "#d3d3d3" }}> 
 
@@ -52,6 +75,7 @@ export default function Submissions() {
 
             {/* block */}
             <div className='w-screen'>
+              <form onSubmit={handleSubmit}>
               <div className='text-purple-700 text-center font-semibold text-xl mb-3'>
                 <h1>20. Reprints of 5 Best Research Papers *</h1>
               </div> 
@@ -206,13 +230,16 @@ export default function Submissions() {
                   <tbody>
                     <tr>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-11/12'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='ref_name' onChange={handleInput} className='w-11/12'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-11/12'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='ref_position' onChange={handleInput} className='w-11/12'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><select required>
+                        <div className='flex flex-wrap justify-center'><select
+                        name='ref_association' onChange={handleInput} required>
                           <option value='Select'>Select</option>
                           <option value='Thesis Supervisor'>Thesis Supervisor</option>
                           <option value='PostDoc Supervisor'>PostDoc Supervisor</option>
@@ -221,86 +248,41 @@ export default function Submissions() {
                         </select></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-11/12'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='ref_organization' onChange={handleInput} className='w-11/12'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-11/12'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='ref_mail' onChange={handleInput} className='w-11/12'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-11/12'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='ref_contact' onChange={handleInput} className='w-11/12'/></div>
                       </td>
                     </tr>
-                    <tr>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-11/12'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-11/12'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><select required>
-                          <option value='Select'>Select</option>
-                          <option value='Thesis Supervisor'>Thesis Supervisor</option>
-                          <option value='PostDoc Supervisor'>PostDoc Supervisor</option>
-                          <option value='Research Collaborator'>Research Collaborator</option>
-                          <option value='Other'>Other</option>
-                        </select></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-11/12'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-11/12'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-11/12'/></div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-11/12'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-11/12'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><select required>
-                          <option value='Select'>Select</option>
-                          <option value='Thesis Supervisor'>Thesis Supervisor</option>
-                          <option value='PostDoc Supervisor'>PostDoc Supervisor</option>
-                          <option value='Research Collaborator'>Research Collaborator</option>
-                          <option value='Other'>Other</option>
-                        </select></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-11/12'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-11/12'/></div>
-                      </td>
-                      <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-11/12'/></div>
-                      </td>
-                    </tr>
+                    
                   </tbody>
                 </table>
               </div>
 
-
+              <div className='flex flex-wrap items-center justify-between mt-3'>
+              <div>
+                <Link to="/rel_info" className='bg-blue-900 text-white px-2 py-1 rounded-md'>
+                  Back
+                </Link>
+              </div>
+              <div>
+                <button type='submit' className='bg-green-500 text-white px-2 py-1 rounded-md'>
+                  Save & Next
+                </button>
+              </div>
+              
+            </div>
+            
+            </form>
 
             </div>
           
-            <div>
-              <Link to="/rel_info" className='bg-blue-900 text-white px-2 py-1 rounded-md'>
-                Back
-              </Link>
-            </div>
-            <div>
-              <Link to="/payment" className='bg-green-500 text-white px-2 py-1 rounded-md'>
-                Save & Next
-              </Link>
-            </div>
-
           </div>
           
         </div>

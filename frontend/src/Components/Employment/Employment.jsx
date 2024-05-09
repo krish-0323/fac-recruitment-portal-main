@@ -45,6 +45,17 @@ export default function Employment() {
   
   const navigate = useNavigate();
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios.post('http://localhost:8081/employment', values)
+    .then(res => {
+      navigate('/publications');
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
   return (
     <>
         <div className=' w-full min-w-96 overflow-auto' style={{ backgroundColor: "#d3d3d3" }}> 
@@ -89,7 +100,7 @@ export default function Employment() {
 
             {/* block */}
             <div className='w-screen'>
-              <form action=''></form>
+              <form action='' onSubmit={handleSubmit}>
               <div className='text-purple-700 text-center font-semibold text-xl mb-3'>
                 <h1>3. Employment Details</h1>
               </div>
@@ -351,17 +362,22 @@ export default function Employment() {
                   </div>
                 </div>
               </div>
+
+              <div className='flex flex-wrap items-center justify-between mt-3'>
+              <div>
+                <Link to="/faculty_panel" className='bg-blue-900 text-white px-2 py-1 rounded-md'>
+                  Back
+                </Link>
+              </div>
+              <div>
+                <button type='submit' className='bg-green-500 text-white px-2 py-1 rounded-md'>
+                  Save & Next
+                </button>
+              </div>
             </div>
-          
-            <div>
-              <Link to="/academic" className='bg-blue-900 text-white px-2 py-1 rounded-md'>
-                Back
-              </Link>
-            </div>
-            <div>
-              <Link to="/publications" className='bg-green-500 text-white px-2 py-1 rounded-md'>
-                Save & Next
-              </Link>
+            
+
+            </form>
             </div>
 
           </div>

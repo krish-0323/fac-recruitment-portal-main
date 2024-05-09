@@ -107,7 +107,7 @@ app.post('/employment', (req, res) => {
         req.body.r_dol,
         req.body.i_duration
     ]
-    const sql4 = "INSERT INTO chapter (`aos`, `aor`) VALUES (?)";
+    const sql4 = "INSERT INTO as_n_ar (`aos`, `aor`) VALUES (?)";
     const values4 = [
         req.body.aos,
         req.body.aor
@@ -289,6 +289,24 @@ app.post('/academic', (req, res) => {
             return res.json(data);
         });
     });
+})
+
+app.post('/submissions', (req, res) => {
+    const sql = "INSERT into refree (`ref_name`, `ref_position`, `ref_association`, `ref_organization`, `ref_mail`, `ref_contact`) VALUES (?)";
+    const values = [
+        re.body.ref_name,
+        re.body.ref_position,
+        re.body.ref_association,
+        re.body.ref_organization,
+        re.body.ref_mail,
+        re.body.ref_contact,
+    ]
+    db.query(sql, [values], (err, data) => {
+        if(err){
+            return res.json('Error');
+        }
+        return res.json(data);
+    })
 })
 
 app.post('/professional', (req, res) => {
