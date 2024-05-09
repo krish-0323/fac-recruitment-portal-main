@@ -1,11 +1,52 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
 
 export default function Employment() {
+
+  const [values, setValues] = useState({
+    e_position: '',
+    e_organization: '',
+    e_status: '',
+    e_doj: '',
+    e_doc: '',
+    e_duration: '',
+    em_position: '',
+    em_organization: '',
+    em_doj: '',
+    em_dol: '',
+    em_duration: '',
+    t_position: '',
+    t_employer: '',
+    t_course: '',
+    t_ugnpg: '',
+    t_nostudent: '',
+    t_doj: '',
+    t_dol: '',
+    t_duration: '',
+    r_position: '',
+    r_institute: '',
+    r_supervisor: '',
+    r_doj: '',
+    r_dol: '',
+    r_duration: '',
+    i_organization: '',
+    i_profile: '',
+    i_doj: '',
+    i_dol: '',
+    i_duration: '',
+    aos: '',
+    aor: ''
+  })
+  const handleInput = (event) => {
+    setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
+    console.log(event.target.value);
+  }
+  
+  const navigate = useNavigate();
+
   return (
     <>
-
-
         <div className=' w-full min-w-96 overflow-auto' style={{ backgroundColor: "#d3d3d3" }}> 
 
         <div className="flex flex-wrap justify-center content-start gap-y-6 md:gap-y-12 w-full min-w-96 h-screen min-h-fit">
@@ -48,6 +89,7 @@ export default function Employment() {
 
             {/* block */}
             <div className='w-screen'>
+              <form action=''></form>
               <div className='text-purple-700 text-center font-semibold text-xl mb-3'>
                 <h1>3. Employment Details</h1>
               </div>
@@ -59,27 +101,33 @@ export default function Employment() {
                 <div className='grid grid-cols-2 gap-4'>
                   <div className='grid grid-cols-2 gap-2'>
                     <div><label>Position: </label></div>
-                    <div><input type="text" required/></div>
+                    <div><input type="text"
+                    name='e_position' onChange={handleInput} required/></div>
                   </div>
                   <div className='grid grid-cols-2 gap-2'>
                     <div><label>Organisation/Institution: </label></div>
-                    <div><input type="text" required/></div>
+                    <div><input type="text"
+                    name='e_organization' onChange={handleInput} required/></div>
                   </div>
                   <div className='grid grid-cols-2 gap-2'>
                     <div><label>Status: </label></div>
-                    <div><input type="text" required/></div>
+                    <div><input type="text"
+                    name='e_status' onChange={handleInput} required/></div>
                   </div>
                   <div className='grid grid-cols-2 gap-2'>
                     <div><label>Date of Joining: </label></div>
-                    <div><input type="text" required/></div>
+                    <div><input type="text"
+                    name='e_doj' onChange={handleInput} required/></div>
                   </div>
                   <div className='grid grid-cols-2 gap-2'>
                     <div><label>Date of Completion: </label></div>
-                    <div><input type="text" required/></div>
+                    <div><input type="text"
+                    name='e_doc' onChange={handleInput} required/></div>
                   </div>
                   <div className='grid grid-cols-2 gap-2'>
                     <div><label>Duration (in Years & Months): </label></div>
-                    <div><input type="text" required/></div>
+                    <div><input type="text"
+                    name='e_duration' onChange={handleInput} required/></div>
                   </div>
                 </div>
               </div>
@@ -102,19 +150,24 @@ export default function Employment() {
                   <tbody>
                     <tr>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='em_position' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='em_organization' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='em_doj' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='em_dol' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='em_duration' onChange={handleInput} className='w-full'/></div>
                       </td>
                     </tr>
                   </tbody>
@@ -124,7 +177,7 @@ export default function Employment() {
                     <p>Experience: Minimum 6 years’ experience of which at least 3 years should be at the level of Assistant Professor Grade I/Senior Scientific Officer/Senior Design Engineer.</p>
                 </div>
                 <div className='mx-3'>
-                  <input type='checkbox'/>
+                  <input type='checkbox' name='minExp' onChange={handleInput}/>
                   <label> Yes </label>
                 </div>
 
@@ -151,28 +204,36 @@ export default function Employment() {
                   <tbody>
                     <tr>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='t_position' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='t_employer' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='t_course' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='t_ugnpg' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='t_nostudent' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='t_doj' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='t_dol' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='t_duration' onChange={handleInput} className='w-full'/></div>
                       </td>
                     </tr>
                   </tbody>
@@ -198,22 +259,28 @@ export default function Employment() {
                   <tbody>
                     <tr>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='r_position' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='r_institute' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='r_supervisor' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='r_doj' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='r_dol' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='r_duration' onChange={handleInput} className='w-full'/></div>
                       </td>
                     </tr>
                   </tbody>
@@ -238,19 +305,24 @@ export default function Employment() {
                   <tbody>
                     <tr>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='i_organization' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='i_profile' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='i_doj' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='i_dol' onChange={handleInput} className='w-full'/></div>
                       </td>
                       <td className='border border-slate-700 p-1'>
-                        <div className='flex flex-wrap justify-center'><input type='text' className='w-full'/></div>
+                        <div className='flex flex-wrap justify-center'><input type='text'
+                        name='i_duration' onChange={handleInput} className='w-full'/></div>
                       </td>
                     </tr>
                   </tbody>
@@ -265,14 +337,16 @@ export default function Employment() {
                 <div className='px-4' style={{backgroundColor:"#8ecae6"}}>
                   <div className='w-full font-medium py-0.5 px-2'><label>Areas of specialization</label></div>
                   <div>
-                    <textarea rows="6" cols="50" className='rounded-lg'>
+                    <textarea rows="6" cols="50"
+                    name='aos' onChange={handleInput} className='rounded-lg'>
                     </textarea>
                   </div>
                 </div>
                 <div className='px-4' style={{backgroundColor:"#8ecae6"}}>
                   <div className='w-full font-medium py-0.5 px-2'><label>Current Area of research</label></div>
                   <div>
-                    <textarea rows="6" cols="50" className='rounded-lg'>
+                    <textarea rows="6" cols="50"
+                    name='aor' onChange={handleInput} className='rounded-lg'>
                     </textarea>
                   </div>
                 </div>

@@ -69,6 +69,82 @@ app.post('/faculty_panel', (req, res) => {
     });
 })
 
+app.post('/employment', (req, res) => {
+    const sql = "INSERT INTO presentemployment (`e_position`, `e_organization`, `e_status`, `e_doj`, `e_doc`) VALUES (?)"
+    const values = [
+        req.body.e_position,
+        req.body.e_organization,
+        req.body.e_status,
+        req.body.e_doj,
+        req.body.e_doc,
+        req.body.e_duration
+    ]
+    const sql1 = "INSERT INTO emp_history (`em_position`, `em_organization`, `em_doj`, `em_dol`, `em_duration`) VALUES (?)";
+    const values1 = [
+        req.body.em_position,
+        req.body.em_organization,
+        req.body.em_doj,
+        req.body.em_dol,
+        req.body.em_duration
+    ]
+    const sql2 = "INSERT INTO teaching (`t_position`, `t_employer`, `t_course`, `t_ugnpg`, `t_nostudent`, `t_doj`, `t_dol`,  `t_duration`) VALUES (?)";
+    const values2 = [
+        req.body.t_position,
+        req.body.t_employer,
+        req.body.t_course,
+        req.body.t_ugnpg,
+        req.body.t_nostudent,
+        req.body.t_doj,
+        req.body.t_dol,
+        req.body.t_duration
+    ]
+    const sql3 = "INSERT INTO research (`r_position`, `r_institute`, `r_supervisor`, `r_doj`, `r_dol`, ``) VALUES (?)";
+    const values3 = [
+        req.body.r_position,
+        req.body.r_institute,
+        req.body.r_supervisor,
+        req.body.r_doj,
+        req.body.r_dol,
+        req.body.i_duration
+    ]
+    const sql4 = "INSERT INTO chapter (`aos`, `aor`) VALUES (?)";
+    const values4 = [
+        req.body.aos,
+        req.body.aor
+    ]
+    db.query(sql, [values], (err, data) => {
+        if(err){
+            return res.json('Error');
+        } else {
+            db.query(sql1, [values1], (err, data) => {
+                if(err){
+                    return res.json('Error');
+                } else {
+                    db.query(sql2, [values2], (err, data) => {
+                        if(err){
+                            return res.json('Error');
+                        } else {
+                            db.query(sql3, [values3], (err, data) => {
+                                if(err){
+                                    return res.json('Error');
+                                } else {
+                                    db.query(sql4, [values4], (err, data) => {
+                                        if(err){
+                                            return res.json('Error');
+                                        } else {
+                                            return res.json(data);
+                                        }
+                                    })
+                                }
+                            }) 
+                        }
+                    })
+                }
+            })
+        }
+    })
+})
+
 app.post('/publications', (req, res) => {
     const sql = "INSERT INTO publication (`IJP`, `NJP`, `ICP`, `NCP`, `patent`, `book`, `chapter`) VALUES (?)";
     const values = [
