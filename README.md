@@ -35,6 +35,7 @@ The portal employes a secure signup and authentication for the users
 <br/>
 <br/>
 # 3. Form <br/>
+The form is responsive, user-friendly, and features an attractive, enhanced UI.
 ![Screenshot (710)](https://github.com/user-attachments/assets/ca590c03-c7d5-4ecc-b654-c472a0ed08ba)
 <br/>
 
