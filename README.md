@@ -23,7 +23,7 @@ The Dummy Faculty Recruitment Portal for IIT Patna is a comprehensive web applic
 **For frontend:** Give command in local terminal: npm run dev <br/>
 **For backend**: Give command in local terminal: npm start <br/>
 
-**Login Page** <br/>
+# **Login Page** <br/>
 ![Screenshot (708)](https://github.com/user-attachments/assets/443d1e55-1561-4db8-bb11-07b6f1985150)
 <br/>
 **SignUp Page** <br/>
