@@ -16,23 +16,24 @@ The Dummy Faculty Recruitment Portal for IIT Patna is a comprehensive web applic
 **For backend**: Give command in local terminal: npm start <br/>
 
 # 1. Login Page <br/>
-The portal employes a secure login and authentication for the users
+The portal employes a secure login and authentication for the users.
 
 ![Screenshot (708)](https://github.com/user-attachments/assets/443d1e55-1561-4db8-bb11-07b6f1985150)
 <br/>
 # 2. SignUp Page <br/>
-The portal employes a secure signup and authentication for the users
+The portal employes a secure signup and authentication for the users.
 
 ![Screenshot (709)](https://github.com/user-attachments/assets/ad97c9dc-cf3c-4f5f-b7d5-1bcdf8fa6f5d)
 <br/>
 <br/>
 # 3. Form <br/>
 The form is responsive, user-friendly, and features an attractive, enhanced UI.
+
 ![Screenshot (710)](https://github.com/user-attachments/assets/ca590c03-c7d5-4ecc-b654-c472a0ed08ba)
 <br/>
 
 # 4. Document (jpg and pdf) Upload Facility <br/>
-The documents uploaded can be previewed and also changed by logging in again till the application/portal is allowed to be open
+The documents uploaded can be previewed and also changed by logging in again till the application/portal is allowed to be open.
 
 ![Screenshot (712)](https://github.com/user-attachments/assets/29183590-51e8-4d8a-a28c-b555843baa61)
 ![Screenshot (713)](https://github.com/user-attachments/assets/f18a9426-b1c2-435a-8e68-62c0e26c24f0)
