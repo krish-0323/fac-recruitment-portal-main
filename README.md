@@ -29,5 +29,11 @@ The Dummy Faculty Recruitment Portal for IIT Patna is a comprehensive web applic
 **SignUp Page** <br/>
 ![Screenshot (709)](https://github.com/user-attachments/assets/ad97c9dc-cf3c-4f5f-b7d5-1bcdf8fa6f5d)
 <br/>
+<br/>
+**Form** <br/>
+![Screenshot (710)](https://github.com/user-attachments/assets/ca590c03-c7d5-4ecc-b654-c472a0ed08ba)
+<br/>
+![Screenshot (711)](https://github.com/user-attachments/assets/78c771c5-4171-4d35-a782-a596fef24d4a)
+<br/>
 
 
