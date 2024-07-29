@@ -40,7 +40,8 @@ The portal employes a secure signup and authentication for the users
 
 # 4. Document (jpg and pdf) Upload Facility <br/>
 The documents uploaded can be previewed and also changed by logging in again till the application/portal is allowed to be open
-![Screenshot (711)](https://github.com/user-attachments/assets/78c771c5-4171-4d35-a782-a596fef24d4a)
+![Screenshot (712)](https://github.com/user-attachments/assets/29183590-51e8-4d8a-a28c-b555843baa61)
+
 <br/>
 
 
