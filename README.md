@@ -10,14 +10,6 @@ The Dummy Faculty Recruitment Portal for IIT Patna is a comprehensive web applic
 **Backend:** NodeJS, ExpressJS <br/>
 **Database:** MySQL <br/>
 
-**Key Features:** <br/>
-
-1. User Authentication
-2. Admin Dashboard
-3. JobPostings Management
-4. Application Submission
-5. Application Review
-
 **How to run?** <br/>
 
 **For frontend:** Give command in local terminal: npm run dev <br/>
